@@ -1,0 +1,14 @@
+
+packages/
+
+\.vs/
+
+\.idea/
+
+GevorderdProgrammerenPracticumWeek4/bin/
+
+GevorderdProgrammerenPracticumWeek4/obj/
+
+GevorderdProgrammerenPracticumWeek4\.Tests/bin/
+
+GevorderdProgrammerenPracticumWeek4\.Tests/obj/
