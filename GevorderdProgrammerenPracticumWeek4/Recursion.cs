@@ -30,6 +30,8 @@ namespace GevorderdProgrammerenPracticumWeek4
         /// <returns>the calculated value</returns>
         public double Row(int n)
         {
+            //return n <= 1 ? 1 : (2 / Row(1 - n));
+            
             if (n <= 1)
                 return 1;
             return 1 / Row(n -1);
@@ -55,10 +57,10 @@ namespace GevorderdProgrammerenPracticumWeek4
         /// <param name="e">exponent (macht)</param>
         /// <returns>result of base^exponent</returns>
         public long FastPow(int b, int e)
-        {           
+        {
             if (e == 0)
                 return 1;
-            return  b * FastPow( b, e - 1);
+            return b * FastPow(b, e - 1);
         }
 
         /// <summary>
@@ -68,12 +70,12 @@ namespace GevorderdProgrammerenPracticumWeek4
         /// <returns>true if s is a palindrome, false otherwise</returns>
         public bool IsPalindroom(string s)
         {
-            if(s.Length == 1 || s.Length == 0)  //added check for even cases
+            if (s.Length == 1 || s.Length == 0) //added check for even cases
                 return true;
-            if(s[0] != s[s.Length -1])
+            if (s[0] != s[s.Length - 1])
                 return false;
 
-            return IsPalindroom(s.Substring(1, s.Length -2));
+            return IsPalindroom(s.Substring(1, s.Length - 2));
         }
 
         /// <summary>
@@ -85,11 +87,11 @@ namespace GevorderdProgrammerenPracticumWeek4
         {
             if (list.Count == 1)
                 return list[0];
-               
+
             var o = list[0];
             list.Remove(o);
             list[0] += o;
-            
+
             return Sum(list);
         }
 
@@ -100,7 +102,17 @@ namespace GevorderdProgrammerenPracticumWeek4
         /// <returns>true if the list is sorted ascending</returns>
         public bool IsSorted(List<int> list)
         {
-            throw new NotImplementedException();
+            if (list.Count <= 1)
+                return true;
+
+            var x = list[0];
+            list.Remove(x);
+            var y = list[0];
+
+            if (x > y)
+                return false;
+
+            return IsSorted(list);
         }
 
         /// <summary>
@@ -111,7 +123,29 @@ namespace GevorderdProgrammerenPracticumWeek4
         /// <returns>sorted list</returns>
         public List<int> Merge(List<int> a, List<int> b)
         {
-            throw new NotImplementedException();
+            if (a.Count == 0)
+                return b;
+            if (b.Count == 0)
+                return a;
+
+            var li = new List<int>();
+
+            var ai = a[0];
+            var bi = b[0];
+
+            if (ai < bi)
+            {
+                li.Add(ai);
+                a.Remove(ai);
+            }
+            else
+            {
+                li.Add(bi);
+                b.Remove(bi);
+            }
+
+            li.AddRange(Merge(a, b));
+            return li;
         }
 
         /// <summary>
@@ -121,7 +155,7 @@ namespace GevorderdProgrammerenPracticumWeek4
         /// <returns>sorted list</returns>
         public List<int> MergeSort(List<int> list)
         {
-            throw new NotImplementedException();
+            return list.Count <= 1 ? list : Merge(MergeSort(list.Take(list.Count / 2).ToList()),MergeSort(list.Skip(list.Count / 2).ToList()) );
         }
     }
 }

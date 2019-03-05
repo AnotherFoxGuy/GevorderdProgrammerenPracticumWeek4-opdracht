@@ -18,10 +18,7 @@ namespace GevorderdProgrammerenPracticumWeek4
 
         public T GetItem(int index)
         {
-            if (index == 0)
-                return item;
-            else
-                return next.GetItem(index - 1);
+            return index == 0 ? item : next.GetItem(index - 1);
         }
 
         public void Add(T item)
@@ -34,17 +31,17 @@ namespace GevorderdProgrammerenPracticumWeek4
 
         public T GetLast()
         {
-            throw new NotImplementedException();
+            return next == null ? item : next.GetLast();
         }
 
         public int Count()
         {
-            throw new NotImplementedException();
+            return next?.Count() + 1 ?? 1;
         }
-
+        
         public MyList<T> Reverse()
         {
-            throw new NotImplementedException();
+            return next == null ? Reverse() : new MyList<T>(item);
         }
     }
 }
