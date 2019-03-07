@@ -43,6 +43,17 @@ namespace GevorderdProgrammerenPracticumWeek4.Tests
             //Assert
             Assert.AreEqual(1.9990234375, result, 0.0000000001);
         }
+        
+        [Test]
+        public void Opdracht02_Row2Test()
+        {
+            //Arrange
+            var recursion = new Recursion();
+            //Act
+            var result = recursion.Row(2);
+            //Assert
+            Assert.AreEqual(1.75, result);
+        }
 
         [Test]
         public void Opdracht02_Row20Test()

@@ -29,12 +29,8 @@ namespace GevorderdProgrammerenPracticumWeek4
         /// <param name="n">defines when the calculation has to stop</param>
         /// <returns>the calculated value</returns>
         public double Row(int n)
-        {
-            //return n <= 1 ? 1 : (2 / Row(1 - n));
-            
-            if (n <= 1)
-                return 1;
-            return 1 / Row(n -1);
+        {           
+            return n == 0 ? 1 : 1 / Math.Pow(2, n) + Row(n - 1);
         }
 
         /// <summary>
@@ -45,9 +41,7 @@ namespace GevorderdProgrammerenPracticumWeek4
         /// <returns>result of base^exponent</returns>
         public long SimplePow(int b, int e)
         {
-            if (e == 0)
-                return 1;
-            return b * SimplePow(b, e - 1);
+            return e == 0 ? 1 : b * SimplePow(b, e - 1);
         }
 
         /// <summary>
@@ -58,9 +52,7 @@ namespace GevorderdProgrammerenPracticumWeek4
         /// <returns>result of base^exponent</returns>
         public long FastPow(int b, int e)
         {
-            if (e == 0)
-                return 1;
-            return b * FastPow(b, e - 1);
+            return e == 0 ? 1 : b * FastPow(b, e - 1);
         }
 
         /// <summary>
